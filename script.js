@@ -1,39 +1,27 @@
-const navToggle = document.querySelector("[data-nav-toggle]");
-const nav = document.querySelector("[data-nav]");
 const header = document.querySelector("[data-header]");
-const year = document.querySelector("[data-year]");
-const form = document.querySelector("[data-contact-form]");
-const formNote = document.querySelector("[data-form-note]");
+const nav = document.querySelector("[data-nav]");
+const navToggle = document.querySelector("[data-nav-toggle]");
 
-if (year) {
-  year.textContent = new Date().getFullYear();
+function syncHeaderState() {
+  const isScrolled = window.scrollY > 12;
+  header.classList.toggle("scrolled", isScrolled);
 }
 
-if (navToggle && nav) {
-  navToggle.addEventListener("click", () => {
-    const isOpen = nav.classList.toggle("is-open");
-    navToggle.setAttribute("aria-expanded", String(isOpen));
-    navToggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
-  });
-
-  nav.addEventListener("click", (event) => {
-    if (event.target.matches("a")) {
-      nav.classList.remove("is-open");
-      navToggle.setAttribute("aria-expanded", "false");
-      navToggle.setAttribute("aria-label", "Open navigation");
-    }
-  });
-}
-
-window.addEventListener("scroll", () => {
-  if (!header) return;
-  header.classList.toggle("has-shadow", window.scrollY > 8);
+navToggle.addEventListener("click", () => {
+  const isOpen = nav.classList.toggle("open");
+  header.classList.toggle("nav-open", isOpen);
+  navToggle.setAttribute("aria-expanded", String(isOpen));
+  navToggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
 });
 
-if (form && formNote) {
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    form.reset();
-    formNote.textContent = "Thanks. Your request is ready for follow-up. For urgent service, call 201-555-1234.";
-  });
-}
+nav.addEventListener("click", (event) => {
+  if (event.target.matches("a")) {
+    nav.classList.remove("open");
+    header.classList.remove("nav-open");
+    navToggle.setAttribute("aria-expanded", "false");
+    navToggle.setAttribute("aria-label", "Open navigation");
+  }
+});
+
+window.addEventListener("scroll", syncHeaderState, { passive: true });
+syncHeaderState();
