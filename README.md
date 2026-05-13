@@ -1,25 +1,30 @@
-# Hoboken Pro Plumbing Website
+# Website Brief
 
-Build a clean one-page website for this business.
+This is an unofficial sample/mockup website. Do not claim the business requested it.
 
-Business name: Hoboken Pro Plumbing  
-Trade: plumbing  
-City: Hoboken  
-Phone: 201-555-1234  
+Business name: Hoboken Pro Plumbing
+Trade or category: plumbing
+City: Hoboken
+Phone: 201-555-1234
 Current website: https://example.com
 
-Goal:
-Create a modern landing page for a local plumbing company.
+Build a clean, modern one-page website.
 
-Sections:
+Required files:
+- index.html
+- style.css
+- script.js
+
+Required sections:
 - Hero section
-- Services
+- Services or menu highlights
 - Why choose us
 - Service area
 - Contact call-to-action
+- Small footer note: "Unofficial sample website concept."
 
-Requirements:
-- Use simple HTML, CSS, and JavaScript.
-- Create index.html, style.css, and script.js.
-- Make it look professional.
-- Make it ready to deploy on Vercel.
+Rules:
+- Use only static HTML, CSS, and JavaScript.
+- Do not use React, Next.js, or build tools.
+- Make it mobile responsive.
+- Make it ready for Vercel.
